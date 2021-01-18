@@ -2,29 +2,50 @@
     {
         "artista": "Froid",
         "foto": "Froid.jpg",
-        "rimas":[
-            "Não ponha fé nos ratos, mano, vai por mim\nEsse lance de tempo é só um delírio\n",
-            "Eu penso em resistir um dia, na covardia\nO bagulho é que o sonho é de quem busca\n",
-            "Quem se nega à verdade é quem mais se frustra\nMachuquei meu tempo consertando erros\n",
-            "Hoje eu prefiro mais os meus defeitos\nSeus olhos vão arder, são muitos anos na caverna\n"
-        ],
         "versos":[
-            "Não ponha fé nos ratos, mano, vai por mim\n",
+            "Não ponha fé nos ratos mano vai por mim\n",
             "Esse lance de tempo é só um delírio\n",
             "Eu penso em resistir um dia, na covardia\n",
             "O bagulho é que o sonho é de quem busca\n",
             "Quem se nega à verdade é quem mais se frustra\n",
             "Machuquei meu tempo consertando erros\n",
             "Hoje eu prefiro mais os meus defeitos\n",
-            "Seus olhos vão arder, são muitos anos na caverna\n"
+            "Seus olhos vão arder são muitos anos na caverna\n"
+        ]
+
+    },
+    {
+        "artista": "Duzz",
+        "foto": "Duzz.jpg",
+        "versos":[
+            "É que eu fiz lucro e agora eles tão puto\n",
+            "Hoje eu só vejo caminhos de luz nos lugares que eu vou\n",
+            "O que os olhos não veem é o que o coração mais sente\n",
+            "O bolso até sustenta mas o coração destrói\n",
+            "Então vai o que te impede de correr atrás?\n",
+            "Teu corpo comigo eu já considero vício\n"
+        ]
+
+    },
+    {
+        "artista": "Xamã",
+        "foto": "Xamã.jpg",
+        "versos":[
+            "Prometo que se o chão cair de novo eu te seguro\n",
+            "Luxúria que me estraga me torna menos de mim\n",
+            "E o coração parou quando eu conheci você\n",
+            "É que quando a gente ama a gente blefa\n",
+            "Eu vou te levar daqui meu bem\n",
+            "Metáforas da rua vão te ensinar a ser homem\n"
         ]
 
     },
     {
         "artista": "Dfideliz",
+        "foto": "Dfideliz.jpg",
         "versos":[
             "Bau Bau Bau\n",
-            "Eu sou preto, lá do Fontalis\n",
+            "É que eu sou preto, lá do Fontalis\n",
             "Vem jogando a bunda enquanto eu posso preparar um gin\n",
             "Prefiro uma Glock do que ter um abraço\n",
             "Faz tempo que essa vida bandida já tá me dando um din\n",
@@ -34,44 +55,21 @@
 
     },
     {
-        "artista": "Duzz",
-        "foto": "Duzz.jpg",
-        "versos":[
-            "É que eu fiz lucro, e agora eles tão puto\n",
-            "Hoje eu só vejo caminhos de luz nos lugares que eu vou\n",
-            "O que os olhos não veem é o que o coração mais sente\n",
-            "O bolso até sustenta mas o coração destrói\n",
-            "Então vai, vai, o que te impede de correr atrás?\n",
-            "Teu corpo comigo, já considero meu vício\n"
-        ]
-
-    },
-    {
-        "artista": "Xamã",
-        "versos":[
-            "Prometo que se o chão cair de novo eu te seguro\n",
-            "Luxúria me estraga, me torna menos de mim\n",
-            "E o coração parou quando eu conheci você\n",
-            "Quando a gente ama, a gente blefa\n",
-            "Eu vou te levar daqui, meu bem\n",
-            "Metáforas da rua vão te ensinar a ser homem\n"
-        ]
-
-    },
-    {
         "artista": "Mano Brown",
+        "foto": "Mano_Brown.jpg",
         "versos":[
-            "Quando a caminhada fica dura, só os duros continuam caminhando\n",
-            "Chora agora e ri depois pivete\n",
+            "Quando a caminhada fica dura os duros continuam caminhando\n",
+            "Cê chora agora e ri depois pivete\n",
             "Eu tenho uma missão e não vou parar\n",
-            "Deus é o refúgio dos fracos, e eu sou só mais um\n",
+            "Deus é o refúgio dos fracos e eu sou só mais um\n",
             "A alma guarda o que a mente tenta esquecer\n",
-            "A verdade dói, mas liberta.\n"
+            "A verdade dói mas liberta irmão.\n"
         ]
 
     },
     {
         "artista": "MC Brinquedo",
+        "foto": "MC_Brinquedo.jpg",
         "versos":[
             "Tu vai mamar com essa boquinha de aparelho\n",
             "Perfume importado atraindo as novinhas\n",
@@ -88,26 +86,28 @@
 
     },
     {
-        "artista": "Xamã",
+        "artista": "Pabllo Vittar",
+        "foto": "Pabllo_Vittar.jpg",
         "versos":[
-            "Prometo que se o chão cair de novo eu te seguro\n",
-            "Luxúria me estraga, me torna menos de mim\n",
-            "E o coração parou quando eu conheci você\n",
-            "Quando a gente ama, a gente blefa\n",
-            "Eu vou te levar daqui, meu bem\n",
-            "Metáforas da rua vão te ensinar a ser homem\n"
+            "Ai como eu tô bandida\n",
+            "Eu não abaixo a cabeça pra macho\n",
+            "Me beija a noite inteira sexo na banheira\n",
+            "Vou te dar canseira quero do inicio até o fim\n",
+            "Levanta a mão pro alto e sente o rajadão\n",
+            "Não vem mandar em mim\n"
         ]
 
     },
     {
-        "artista": "Xamã",
+        "artista": "Chico Buarque",
+        "foto": "Chico_Buarque.jpg",
         "versos":[
-            "Prometo que se o chão cair de novo eu te seguro\n",
-            "Luxúria me estraga, me torna menos de mim\n",
-            "E o coração parou quando eu conheci você\n",
-            "Quando a gente ama, a gente blefa\n",
-            "Eu vou te levar daqui, meu bem\n",
-            "Metáforas da rua vão te ensinar a ser homem\n"
+            "Seus olhos fundos guardam tanta dor\n",
+            "E você era a princesa que eu fiz coroar\n",
+            "O que é que a vida vai fazer de mim?\n",
+            "Amou daquela vez como se fosse a última\n",
+            "Morreu na contramão, atrapalhando o tráfego\n",
+            "Pela fumaça, desgraça, que a gente tem que tossir\n"
         ]
 
     }
