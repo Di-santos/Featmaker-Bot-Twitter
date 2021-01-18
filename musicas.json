@@ -1,6 +1,13 @@
 [
     {
         "artista": "Froid",
+        "foto": "Froid.jpg",
+        "rimas":[
+            "Não ponha fé nos ratos, mano, vai por mim\nEsse lance de tempo é só um delírio\n",
+            "Eu penso em resistir um dia, na covardia\nO bagulho é que o sonho é de quem busca\n",
+            "Quem se nega à verdade é quem mais se frustra\nMachuquei meu tempo consertando erros\n",
+            "Hoje eu prefiro mais os meus defeitos\nSeus olhos vão arder, são muitos anos na caverna\n"
+        ],
         "versos":[
             "Não ponha fé nos ratos, mano, vai por mim\n",
             "Esse lance de tempo é só um delírio\n",
@@ -28,6 +35,7 @@
     },
     {
         "artista": "Duzz",
+        "foto": "Duzz.jpg",
         "versos":[
             "É que eu fiz lucro, e agora eles tão puto\n",
             "Hoje eu só vejo caminhos de luz nos lugares que eu vou\n",
