@@ -36,11 +36,11 @@ let artistas = ["Froid", "Duzz", "Xamã", "Dfideliz", "Mano Brown", "MC Brinqued
 
 // Horários
 let horariosFeat = new scheduler.RecurrenceRule();
-horariosFeat.hour = [8, 15, 19, 23];
+horariosFeat.hour = [11, 18, 22, 02];
 horariosFeat.minute = 0;
 
 let horariosSingle = new scheduler.RecurrenceRule();
-horariosSingle.hour = [12, 17, 21];
+horariosSingle.hour = [15, 20, 00];
 horariosSingle.minute = 0;
 
 // Agendamento de posts
