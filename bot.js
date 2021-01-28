@@ -175,21 +175,19 @@ stream.on('tweet', (tweet) => {
     console.log(username)
     let msg = tweet.text.split(' / ')
 
+    let artistaPedido1 = msg[1]
+    let artistaPedido2 = msg[2]
 
-    let cantor1 = msg[1]
-    let cantor2 = msg[2]
+    if (artistas.includes(artistaPedido1) && artistas.includes(artistaPedido2)) {
+
 
     let artista1 = ""
     let artista2 = ""
     let ids = []
 
-    // Seleção dos Artistas
-    artista1 = cantor1
-    artista2 = cantor2
-
-    while (artista1 == artista2){
-        artista2 = random(artistas)
-    }
+    // atribuição dos artistas
+    artista1 = artistaPedido1
+    artista2 = artistaPedido2
 
     // Upload das fotos dos artistas
     fs.readdir( __dirname + '/images', ( err, files ) => {
@@ -248,6 +246,23 @@ stream.on('tweet', (tweet) => {
         }})
 
     })
+    }
+
+    else {
+        Bot.post('statuses/update', {
+            status: '@' + username + ' Ops, houve um erro de digitação ou estes artistas não estão cadastrados (acesse a lista na bio)',
+            in_reply_to_status_id: id
+        },
+        (error, data, response) => {
+
+            if (error){
+                console.log(data)
+            }
+            else{
+                console.log("Erro de digitação, post respondido!")
+            }
+        })
+    }
   
 })
 
