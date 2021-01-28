@@ -11,9 +11,9 @@
     Alt + Shift + I -> coloca o cursor no final 
 */
 
-//--------------------------------------------------------- FEATMAKER BOT ---------------------------------------------------------------
+//--------------------------------------------------------- FEATMAKER BOT -------------------------------------------------------------//
 
-// +++ Login configs +++
+// +++ Login +++
 const twit = require('twit');
 require('dotenv').config();
 const Bot = new twit({
@@ -34,7 +34,7 @@ const path = require( 'path' );
 let artistas = ["Froid", "Duzz", "Xamã", "Dfideliz", "Mano Brown", "MC Brinquedo", "Pabllo Vittar",
 "Chico Buarque", "Vitão", "Amado Batista", "É o Tchan", "Skank"] 
 
-// Horários
+// Horários e Configurações
 let horariosFeat = new scheduler.RecurrenceRule();
 horariosFeat.hour = [11, 18, 22, 02];
 horariosFeat.minute = 0;
@@ -43,7 +43,9 @@ let horariosSingle = new scheduler.RecurrenceRule();
 horariosSingle.hour = [15, 20, 00];
 horariosSingle.minute = 0;
 
-// Agendamento de posts
+var stream = Bot.stream('statuses/filter', { track: '#FeatmakerBot'})
+
+// Agendamento de posts e respostas
 scheduler.scheduleJob(horariosFeat, ()=>{
 
     let artista1 = ""
@@ -163,8 +165,93 @@ scheduler.scheduleJob(horariosSingle, ()=>{
     
 })
 
-// +++ Funções +++
+stream.on('tweet', (tweet) => {
 
+    // Extração do Conteúdo
+    console.log('Tweet Encontrado!')
+
+    let id = tweet.id
+    let username = tweet.user.screen_name + '\n\n'
+    console.log(username)
+    let msg = tweet.text.split(' / ')
+
+
+    let cantor1 = msg[1]
+    let cantor2 = msg[2]
+
+    let artista1 = ""
+    let artista2 = ""
+    let ids = []
+
+    // Seleção dos Artistas
+    artista1 = cantor1
+    artista2 = cantor2
+
+    while (artista1 == artista2){
+        artista2 = random(artistas)
+    }
+
+    // Upload das fotos dos artistas
+    fs.readdir( __dirname + '/images', function( err, files ){
+        let cantor1 = musicas.find(versos => versos.artista == artista1)
+        const imagePath1 = path.join( __dirname, '/images/' + `${cantor1.foto}`)
+        let b64content1 = fs.readFileSync( imagePath1, { encoding: 'base64' } );
+
+        Bot.post( 'media/upload', {
+            media_data: b64content1
+        },
+        ( err, data, response ) => {
+            
+            if ( err ){
+                console.log( 'error:', err );
+            }
+            
+            else{
+
+                console.log("Primeira imagem upada!")
+                ids.push(data.media_id_string);
+
+                let cantor2 = musicas.find(versos => versos.artista == artista2)
+                const imagePath2 = path.join( __dirname, '/images/' + `${cantor2.foto}`)
+                let b64content2 = fs.readFileSync( imagePath2, { encoding: 'base64' } );
+
+                Bot.post( 'media/upload', {
+                    media_data: b64content2
+                },
+                ( err, data, response ) => {
+                    
+                    if ( err ){
+                        console.log( 'error:', err );
+                    }
+
+                    else {
+                        console.log("Segunda imagem upada!")
+                        ids.push(data.media_id_string);
+
+                        // Postagem do feat
+                        Bot.post('statuses/update', {
+                            status: '@' + username + makeFeat(artista1, artista2),
+                            media_ids: new Array( ids ),
+                            in_reply_to_status_id: id
+                        },
+                        (error, data, response) => {
+            
+                            if (error){
+                                console.log(data)
+                            }
+                            else{
+                                console.log("Feat gerado e respondido!")
+                            }
+                        })
+            }})
+
+        }})
+
+    })
+  
+})
+
+// +++ Funções +++
 function makeFeat(artista1, artista2){
 
     let titulo = `Feat entre ${artista1} e ${artista2}:\n\n`
