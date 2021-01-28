@@ -170,7 +170,7 @@ stream.on('tweet', (tweet) => {
     // Extração do Conteúdo
     console.log('Tweet Encontrado!')
 
-    let id = tweet.id
+    let id = tweet.id_str
     let username = tweet.user.screen_name + '\n\n'
     console.log(username)
     let msg = tweet.text.split(' / ')
@@ -192,7 +192,7 @@ stream.on('tweet', (tweet) => {
     }
 
     // Upload das fotos dos artistas
-    fs.readdir( __dirname + '/images', function( err, files ){
+    fs.readdir( __dirname + '/images', ( err, files ) => {
         let cantor1 = musicas.find(versos => versos.artista == artista1)
         const imagePath1 = path.join( __dirname, '/images/' + `${cantor1.foto}`)
         let b64content1 = fs.readFileSync( imagePath1, { encoding: 'base64' } );
