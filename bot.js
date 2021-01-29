@@ -32,7 +32,8 @@ const random = require('random-item');
 const path = require( 'path' );
 
 let artistas = ["Froid", "Duzz", "Xamã", "Dfideliz", "Mano Brown", "MC Brinquedo", "Pabllo Vittar",
-"Chico Buarque", "Vitão", "Amado Batista", "É o Tchan", "Skank"] 
+"Chico Buarque", "Vitão", "Amado Batista", "É o Tchan", "Skank", "Ferrugem", "Caetano Veloso",
+"Péricles", "Kamaitachi", "Raffa Moreira"] 
 
 // Horários e Configurações
 let horariosFeat = new scheduler.RecurrenceRule();
@@ -48,6 +49,7 @@ var stream = Bot.stream('statuses/filter', { track: '#FeatmakerBot'})
 // Agendamento de posts e respostas
 scheduler.scheduleJob(horariosFeat, ()=>{
 
+    console.log('Feat Iniciado!')
     let artista1 = ""
     let artista2 = ""
     let ids = []
@@ -78,7 +80,7 @@ scheduler.scheduleJob(horariosFeat, ()=>{
             
             else{
     
-                console.log("Primeira Imagem Upada")
+                console.log("Primeira Imagem Upada!")
                 ids.push(data.media_id_string);
     
                 let cantor2 = musicas.find(versos => versos.artista == artista2)
@@ -95,7 +97,7 @@ scheduler.scheduleJob(horariosFeat, ()=>{
                     }
     
                     else {
-                        console.log("Segunda Imagem Upada")
+                        console.log("Segunda Imagem Upada!")
                         ids.push(data.media_id_string);
     
                         Bot.post('statuses/update', {
@@ -108,7 +110,7 @@ scheduler.scheduleJob(horariosFeat, ()=>{
                                 console.log(data)
                             }
                             else{
-                                console.log("Feat Publicado!")
+                                console.log("Feat Publicado!\n\n")
                             }
                         })
             }})
@@ -120,6 +122,7 @@ scheduler.scheduleJob(horariosFeat, ()=>{
 
 scheduler.scheduleJob(horariosSingle, ()=>{
 
+    console.log('Single Iniciado!')
     let artista1 = ""
     let ids = []
 
@@ -143,7 +146,7 @@ scheduler.scheduleJob(horariosSingle, ()=>{
             }
             
             else{
-                console.log("Segunda Imagem Upada")
+                console.log("Imagem upada!")
                 ids.push(data.media_id_string);
 
                 Bot.post('statuses/update', {
@@ -156,7 +159,7 @@ scheduler.scheduleJob(horariosSingle, ()=>{
                         console.log(data)
                     }
                     else{
-                        console.log("Feat Publicado!")
+                        console.log("Single Publicado!\n\n")
                     }
                 })
             }})
@@ -171,8 +174,8 @@ stream.on('tweet', (tweet) => {
     console.log('Tweet Encontrado!')
 
     let id = tweet.id_str
-    let username = tweet.user.screen_name + '\n\n'
-    console.log(username)
+    let username = tweet.user.screen_name 
+    console.log('@' + username)
     let msg = tweet.text.split(' / ')
 
     let artistaPedido1 = msg[1]
@@ -238,7 +241,7 @@ stream.on('tweet', (tweet) => {
                                 console.log(data)
                             }
                             else{
-                                console.log("Feat gerado e respondido!")
+                                console.log("Feat gerado e respondido!\n\n")
                             }
                         })
             }})
@@ -250,7 +253,7 @@ stream.on('tweet', (tweet) => {
 
     else {
         Bot.post('statuses/update', {
-            status: '@' + username + ' Ops, houve um erro de digitação ou estes artistas não estão cadastrados (acesse a lista na bio)',
+            status: '@' + username + ' Ops, houve um erro de digitação ou estes artistas não estão cadastrados (acesse a lista de instruções na bio!)',
             in_reply_to_status_id: id
         },
         (error, data, response) => {
@@ -259,7 +262,7 @@ stream.on('tweet', (tweet) => {
                 console.log(data)
             }
             else{
-                console.log("Erro de digitação, post respondido!")
+                console.log("Erro de digitação, post respondido!\n\n")
             }
         })
     }
