@@ -49,7 +49,7 @@ var stream = Bot.stream('statuses/filter', { track: '#FeatmakerBot'})
 // Agendamento de posts e respostas
 scheduler.scheduleJob(horariosFeat, ()=>{
 
-    console.log('Feat Iniciado!')
+    console.log('\nFeat Iniciado!')
     let artista1 = ""
     let artista2 = ""
     let ids = []
@@ -122,7 +122,7 @@ scheduler.scheduleJob(horariosFeat, ()=>{
 
 scheduler.scheduleJob(horariosSingle, ()=>{
 
-    console.log('Single Iniciado!')
+    console.log('\nSingle Iniciado!')
     let artista1 = ""
     let ids = []
 
@@ -171,10 +171,10 @@ scheduler.scheduleJob(horariosSingle, ()=>{
 stream.on('tweet', (tweet) => {
 
     // Extração do Conteúdo
-    console.log('Tweet Encontrado!')
+    console.log('\nTweet Encontrado!')
 
     let id = tweet.id_str
-    let username = tweet.user.screen_name 
+    let username = tweet.user.screen_name + '\n'
     console.log('@' + username)
     let msg = tweet.text.split(' / ')
 
