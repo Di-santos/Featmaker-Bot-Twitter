@@ -1,5 +1,6 @@
 # Featmaker Bot (@FeatmakerBot)
 
+## Instruções
 [Instruções de Uso (Notion)](https://www.notion.so/Featmaker-Bot-v-1-8-2276f78fb12d44048d2ff4078d0d1889)
 
 ## O que é
