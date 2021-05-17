@@ -105,7 +105,7 @@ stream.on('tweet', (tweet) => {
         let ids_imagens = []
     
         // Posta o tweet
-        postaFeat(artista1, artista2, ids_imagens, id_tweet)
+        postaFeat(artista1, artista2, ids_imagens, id_tweet, username)
     }
 
     else {
@@ -198,7 +198,7 @@ function postaSingle(artista1, ids_imagens){
 }
 
 function postaFeat(artista1, artista2, ids_imagens, id_tweet, username){
-    
+
     // Upload das fotos dos artistas
     fs.readdir( __dirname + '/images', function( err, files ){
         let cantor1 = musicas.find(versos => versos.artista == artista1)
