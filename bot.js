@@ -239,7 +239,7 @@ function postaFeat(artista1, artista2, ids_imagens, id_tweet, username){
                         
                         if (arguments.length == 5){
                             Bot.post('statuses/update', {
-                                status: "@" + username + "\n\n" + makeFeat(artista1, artista2),
+                                status: "@" + username + makeFeat(artista1, artista2),
                                 in_reply_to_status_id: id_tweet,
                                 media_ids_imagens: new Array( ids_imagens )
                             },
