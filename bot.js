@@ -56,7 +56,7 @@ scheduler.scheduleJob(horariosFeat, ()=>{
     console.log('\nFeat Iniciado!')
     let artista1 = ""
     let artista2 = ""
-    let ids = []
+    let ids_imagens = []
 
     artista1 = random(artistas)
     artista2 = random(artistas)
@@ -66,7 +66,7 @@ scheduler.scheduleJob(horariosFeat, ()=>{
     }
     
     // Postagem do tweet
-    postaFeat(artista1, artista2, ids)
+    postaFeat(artista1, artista2, ids_imagens)
     
 })
 
@@ -75,12 +75,12 @@ scheduler.scheduleJob(horariosSingle, ()=>{
     // Seleção do artista
     console.log('\nSingle Iniciado!')
     let artista1 = ""
-    let ids = []
+    let ids_imagens = []
 
     artista1 = random(artistas)
 
     //Postagem do tweet
-    postaSingle(artista1, ids)
+    postaSingle(artista1, ids_imagens)
     
 })
 
@@ -89,7 +89,7 @@ stream.on('tweet', (tweet) => {
     // Extração do Conteúdo
     console.log('\nTweet Encontrado!')
 
-    let id = tweet.id_str
+    let id_tweet = tweet.id_str
     let username = tweet.user.screen_name + '\n'
     console.log('@' + username)
     let msg = tweet.text.split(' / ')
@@ -99,20 +99,19 @@ stream.on('tweet', (tweet) => {
 
     if (artistas.includes(artistaPedido1) && artistas.includes(artistaPedido2)) {
 
-        
         // Atribuição dos artistas
         let artista1 = artistaPedido1
         let artista2 = artistaPedido2
-        let ids = []
+        let ids_imagens = []
     
         // Posta o tweet
-        postaFeat(artista1, artista2, ids)
+        postaFeat(artista1, artista2, ids_imagens, id_tweet)
     }
 
     else {
         Bot.post('statuses/update', {
             status: '@' + username + ' Ops, houve um erro de digitação ou estes artistas não estão cadastrados (acesse a lista de instruções na bio!)',
-            in_reply_to_status_id: id
+            in_reply_to_status_id: id_tweet
         },
         (error, data, response) => {
 
@@ -159,7 +158,7 @@ function makeSingle(artista){
     return feat.replace(/,/g , '')
 }
 
-function postaSingle(artista1, ids){
+function postaSingle(artista1, ids_imagens){
     // Upload das fotos dos artistas
     fs.readdir( __dirname + '/images', function( err, files ){
         let cantor1 = musicas.find(versos => versos.artista == artista1)
@@ -178,11 +177,11 @@ function postaSingle(artista1, ids){
             
             else{
                 console.log("Imagem upada!")
-                ids.push(data.media_id_string);
+                ids_imagens.push(data.media_id_string);
 
                 Bot.post('statuses/update', {
                     status: makeSingle(artista1),
-                    media_ids: new Array( ids )
+                    media_ids_imagens: new Array( ids_imagens )
                 },
                 (error, data, response) => {
     
@@ -198,7 +197,8 @@ function postaSingle(artista1, ids){
         })
 }
 
-function postaFeat(artista1, artista2, ids){
+function postaFeat(artista1, artista2, ids_imagens, id_tweet, username){
+    
     // Upload das fotos dos artistas
     fs.readdir( __dirname + '/images', function( err, files ){
         let cantor1 = musicas.find(versos => versos.artista == artista1)
@@ -218,7 +218,7 @@ function postaFeat(artista1, artista2, ids){
             else{
     
                 console.log("Primeira Imagem Upada!")
-                ids.push(data.media_id_string);
+                ids_imagens.push(data.media_id_string);
     
                 let cantor2 = musicas.find(versos => versos.artista == artista2)
                 const imagePath2 = path.join( __dirname, '/images/' + `${cantor2.foto}`)
@@ -235,21 +235,41 @@ function postaFeat(artista1, artista2, ids){
     
                     else {
                         console.log("Segunda Imagem Upada!")
-                        ids.push(data.media_id_string);
-    
-                        Bot.post('statuses/update', {
-                            status: makeFeat(artista1, artista2),
-                            media_ids: new Array( ids )
-                        },
-                        (error, data, response) => {
-            
-                            if (error){
-                                console.log(data)
-                            }
-                            else{
-                                console.log("Feat Publicado!\n\n")
-                            }
-                        })
+                        ids_imagens.push(data.media_id_string);
+                        
+                        if (arguments.length == 5){
+                            Bot.post('statuses/update', {
+                                status: "@" + username + "\n\n" + makeFeat(artista1, artista2),
+                                in_reply_to_status_id: id_tweet,
+                                media_ids_imagens: new Array( ids_imagens )
+                            },
+                            (error, data, response) => {
+                
+                                if (error){
+                                    console.log(data)
+                                }
+                                else{
+                                    console.log("Feat publicado e respondido!\n\n")
+                                }
+                            })
+
+                        }
+                        else{
+                            Bot.post('statuses/update', {
+                                status: makeFeat(artista1, artista2),
+                                media_ids_imagens: new Array( ids_imagens )
+                            },
+                            (error, data, response) => {
+                
+                                if (error){
+                                    console.log(data)
+                                }
+                                else{
+                                    console.log("Feat publicado!\n\n")
+                                }
+                            })
+
+                        }
             }})
     
         }})
