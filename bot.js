@@ -181,7 +181,7 @@ function postaSingle(artista1, ids_imagens){
 
                 Bot.post('statuses/update', {
                     status: makeSingle(artista1),
-                    media_ids_imagens: new Array( ids_imagens )
+                    media_ids: new Array( ids_imagens )
                 },
                 (error, data, response) => {
     
@@ -241,7 +241,7 @@ function postaFeat(artista1, artista2, ids_imagens, id_tweet, username){
                             Bot.post('statuses/update', {
                                 status: "@" + username + makeFeat(artista1, artista2),
                                 in_reply_to_status_id: id_tweet,
-                                media_ids_imagens: new Array( ids_imagens )
+                                media_ids: new Array( ids_imagens )
                             },
                             (error, data, response) => {
                 
@@ -257,7 +257,7 @@ function postaFeat(artista1, artista2, ids_imagens, id_tweet, username){
                         else{
                             Bot.post('statuses/update', {
                                 status: makeFeat(artista1, artista2),
-                                media_ids_imagens: new Array( ids_imagens )
+                                media_ids: new Array( ids_imagens )
                             },
                             (error, data, response) => {
                 
