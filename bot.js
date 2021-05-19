@@ -197,7 +197,12 @@ function postaSingle(artista1, ids_imagens){
         })
 }
 
-function postaFeat(artista1, artista2, ids_imagens, id_tweet, username){
+function postaFeat(artista1, artista2, ids_imagens, id_tweet = "sem", username = "sem"){
+    
+    console.log(arguments.length)
+    console.log(id_tweet)
+    console.log(username)
+
 
     // Upload das fotos dos artistas
     fs.readdir( __dirname + '/images', function( err, files ){
@@ -205,7 +210,6 @@ function postaFeat(artista1, artista2, ids_imagens, id_tweet, username){
         const imagePath1 = path.join( __dirname, '/images/' + `${cantor1.foto}`)
         let b64content1 = fs.readFileSync( imagePath1, { encoding: 'base64' } );
     
-        
         Bot.post( 'media/upload', {
             media_data: b64content1
         },
@@ -237,7 +241,9 @@ function postaFeat(artista1, artista2, ids_imagens, id_tweet, username){
                         console.log("Segunda Imagem Upada!")
                         ids_imagens.push(data.media_id_string);
                         
-                        if (arguments.length == 5){
+                        if (id_tweet != "sem" && username != "sem"){
+                            console.log(username)
+                            console.log(id_tweet)
                             Bot.post('statuses/update', {
                                 status: "@" + username + makeFeat(artista1, artista2),
                                 in_reply_to_status_id: id_tweet,
