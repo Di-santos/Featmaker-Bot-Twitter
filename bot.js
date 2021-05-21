@@ -35,11 +35,11 @@ const path = require( 'path' );
 
 // +++ Horários e Configurações do bot +++
 let horariosFeat = new scheduler.RecurrenceRule();
-horariosFeat.hour = [11, 18, 22, 02];
+horariosFeat.hour = [11, 18];
 horariosFeat.minute = 0;
 
 let horariosSingle = new scheduler.RecurrenceRule();
-horariosSingle.hour = [15, 20, 00];
+horariosSingle.hour = [15, 00];
 horariosSingle.minute = 0;
 
 var stream = Bot.stream('statuses/filter', { track: '#FeatmakerBot'})
